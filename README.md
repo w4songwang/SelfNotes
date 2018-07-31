@@ -7,7 +7,7 @@
 
 
 ### 字符串MD5加密成guid
-``` python
+``` c#
 public static Guid EncryptWithMD5(string source)
 {
     byte[] sor = Encoding.UTF8.GetBytes(source);
