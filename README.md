@@ -16,3 +16,7 @@ public static Guid EncryptWithMD5(string source)
     return new Guid(result);
 }
 ``` 
+
+
+### SQLServer字符串MD5加密成guid
+cast(HASHBYTES('MD5','HG8001') as uniqueidentifier)
