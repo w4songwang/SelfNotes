@@ -22,3 +22,8 @@ public static Guid EncryptWithMD5(string source)
 ``` sql
 select cast(HASHBYTES('MD5','HG8001') as uniqueidentifier)
 ```
+
+
+### 前端学习网站
+- [Web Platform Docs](https://webplatform.github.io/)
+- [Mozilla Developer Network ](https://developer.mozilla.org/zh-CN/)
