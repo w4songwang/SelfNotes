@@ -31,3 +31,8 @@ select cast(HASHBYTES('MD5','HG8001') as uniqueidentifier)
 
 ### Ionic相关网站
 - [【组件篇】ionic3开源组件](https://www.jianshu.com/p/3e156999eaa4)
+
+
+
+### 相关网站
+- [Red Gate系列文章](https://www.cnblogs.com/VAllen/archive/2012/09/27/SQLDataCompare.html)
