@@ -34,5 +34,8 @@ select cast(HASHBYTES('MD5','HG8001') as uniqueidentifier)
 
 
 
-### 相关网站
+### 工具类网站
 - [Red Gate系列文章](https://www.cnblogs.com/VAllen/archive/2012/09/27/SQLDataCompare.html)
+
+### docs.microsoft.com 文档
+- [NuGet 文档](https://docs.microsoft.com/zh-cn/nuget/)
