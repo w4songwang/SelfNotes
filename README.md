@@ -45,3 +45,6 @@ select cast(HASHBYTES('MD5','HG8001') as uniqueidentifier)
 - [鱼东东 - 博客园](https://www.cnblogs.com/yudongdong/)
 - [dotNET跨平台](https://me.csdn.net/sD7O95O)
 - [零度编程](https://www.xcode.me/)
+
+### 陌生的概念
+- [burpsuite、时序分析、QQ关系库](https://mp.weixin.qq.com/s?__biz=MzI0MDQ4MTM5NQ==&mid=2247488579&idx=1&sn=f0248519c5d33fd1598af8427e90dfc3&chksm=e91b715fde6cf849395e78cee4d8a2d74a2944fd3934cae8f929182b43b591c51ca8fd9cfb6c&mpshare=1&scene=23&srcid=0220JVhnq2eStE5trGO5HVfX#rd)
