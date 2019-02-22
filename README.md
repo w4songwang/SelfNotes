@@ -24,7 +24,8 @@ select cast(HASHBYTES('MD5','HG8001') as uniqueidentifier)
 ```
 
 ### 数据库数据同步
-``` sql，更新操作=删除旧数据+插入最新数据
+``` sql
+	--更新操作=删除旧数据+插入最新数据
 	alter table HtcTroubleSupervises  NOCHECK constraint all; 
 
 	select * into #tmp from
