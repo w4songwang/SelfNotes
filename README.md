@@ -23,6 +23,23 @@ public static Guid EncryptWithMD5(string source)
 select cast(HASHBYTES('MD5','HG8001') as uniqueidentifier)
 ```
 
+### 数据库数据同步
+``` sql，更新操作=删除旧数据+插入最新数据
+	alter table HtcTroubleSupervises  NOCHECK constraint all; 
+
+	select * into #tmp from
+	[172.48.1.195].carihtc.dbo.HtcTroubleSupervises
+
+	insert into HtcTroubleSupervises
+	select * from #tmp
+	where #tmp.id not in (select id from HtcTroubleSupervises)
+
+	drop table #tmp
+
+	alter table HtcTroubleSupervises  CHECK constraint all; 
+```
+
+
 
 ### 前端学习网站
 - [Web Platform Docs](https://webplatform.github.io/)
