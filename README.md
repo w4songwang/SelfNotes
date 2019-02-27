@@ -23,10 +23,31 @@ public static Guid EncryptWithMD5(string source)
 select cast(HASHBYTES('MD5','HG8001') as uniqueidentifier)
 ```
 
-### [SQL Server：查看SQL日志文件大小命令](https://www.cnblogs.com/hongb/p/5113474.html)
+### [sql 日志文件过大怎么清除](https://jingyan.baidu.com/article/d2b1d102cffb8b5c7e37d4a4.html)
 ``` sql
-dbcc sqlperf(logspace)
+--SQL 2008收缩清空日志方法：1.在SQL2008中清除日志就必须在简单模式下进行，等清除动作完毕再调回到完整模式，一定必务要再改回完整模式，不然数据库就不支持时间点备份了。1).选择数据库–属性—选项—恢复模式–选择简单。2).收缩数据库后，再调回完整。2.可以用命令直接操作
+[sql] view plain copy
+USE[master]  
+GO  
+ALTER DATABASE 要清理的数据库名称 SET RECOVERY SIMPLE WITH NO_WAIT  
+GO  
+ALTER DATABASE 要清理的数据库名称 SET RECOVERY SIMPLE   --简单模式  
+GO  
+USE 要清理的数据库名称  
+GO  
+DBCC SHRINKFILE (N'要清理的数据库名称_log' , 2, TRUNCATEONLY)  --设置压缩后的日志大小为2M，可以自行指定  
+GO  
+USE[master]  
+GO  
+ALTER DATABASE 要清理的数据库名称 SET RECOVERY FULL WITH NO_WAIT  
+GO  
+ALTER DATABASE 要清理的数据库名称 SET RECOVERY FULL  --还原为完全模式  
+GO  
 ```
+
+
+### [SQL Server：查看SQL日志文件大小命令](https://www.cnblogs.com/hongb/p/5113474.html)
+
 
 ### 数据库数据同步
 ``` sql
