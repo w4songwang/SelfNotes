@@ -47,7 +47,9 @@ GO
 
 
 ### [SQL Server：查看SQL日志文件大小命令](https://www.cnblogs.com/hongb/p/5113474.html)
-
+``` sql
+dbcc sqlperf(logspace)
+```
 
 ### 数据库数据同步
 ``` sql
