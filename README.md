@@ -103,4 +103,5 @@ dbcc sqlperf(logspace)
 
 ### 优秀网站
 - [【enet硅谷动力】](http://www.enet.com.cn/)
+- [【微软虚拟学院官网视频教程】](https://mva.microsoft.com/)
 
