@@ -23,6 +23,52 @@ public static Guid EncryptWithMD5(string source)
 select cast(HASHBYTES('MD5','HG8001') as uniqueidentifier)
 ```
 
+
+### SQLServer 查看数据库各个表结构
+``` sql
+					  SELECT
+     表名       = Case When A.colorder=1 Then D.name Else '' End,
+     表说明     = Case When A.colorder=1 Then isnull(F.value,'') Else '' End,
+     字段序号   = A.colorder,
+     字段名     = A.name,
+     字段说明   = isnull(G.[value],''),
+     标识       = Case When COLUMNPROPERTY( A.id,A.name,'IsIdentity')=1 Then '√'Else '' End,
+     主键       = Case When exists(SELECT 1 FROM sysobjects Where xtype='PK' and parent_obj=A.id and name in (
+                      SELECT name FROM sysindexes WHERE indid in( SELECT indid FROM sysindexkeys WHERE id = A.id AND colid=A.colid))) then '√' else '' end,
+     类型       = B.name,
+     占用字节数 = A.Length,
+     长度       = COLUMNPROPERTY(A.id,A.name,'PRECISION'),
+     小数位数   = isnull(COLUMNPROPERTY(A.id,A.name,'Scale'),0),
+     允许空     = Case When A.isnullable=1 Then '√'Else '' End,
+     默认值     = isnull(E.Text,'')
+ FROM
+     syscolumns A
+ Left Join
+     systypes B
+ On
+     A.xusertype=B.xusertype
+ Inner Join
+     sysobjects D
+ On
+     A.id=D.id  and D.xtype='U' and  D.name<>'dtproperties'
+ Left Join
+     syscomments E
+ on
+     A.cdefault=E.id
+ Left Join
+ sys.extended_properties  G
+ on
+     A.id=G.major_id and A.colid=G.minor_id
+ Left Join
+ 
+ sys.extended_properties F
+ On
+     D.id=F.major_id and F.minor_id=0
+ Order By
+     A.id,A.colorder
+```
+
+
 ### [sql 日志文件过大怎么清除](https://jingyan.baidu.com/article/d2b1d102cffb8b5c7e37d4a4.html)
 ``` sql
 --SQL 2008收缩清空日志方法：1.在SQL2008中清除日志就必须在简单模式下进行，等清除动作完毕再调回到完整模式，一定必务要再改回完整模式，不然数据库就不支持时间点备份了。1).选择数据库–属性—选项—恢复模式–选择简单。2).收缩数据库后，再调回完整。2.可以用命令直接操作
