@@ -156,3 +156,10 @@ dbcc sqlperf(logspace)
 
 ### 待征服
 - [【autofac】](https://autofaccn.readthedocs.io/zh/latest/index.html)
+- [【Orchard的vNext版】](https://github.com/OrchardCMS/Brochard)
+- [【html5页面的样板】](https://github.com/h5bp/html5-boilerplate)
+- [【EntityFramework的功能增强】](https://github.com/loresoft/EntityFramework.Extended)
+- [【非常短小精悍的后台任务组件】](https://github.com/HangfireIO/Hangfire )
+- [【监测.NET后端和Web前端每一个步骤的耗时毫秒数，可查看EF生成的SQL】](https://github.com/MiniProfiler/dotnet )
+- [【微信公众平台SDK的C#版，包括企业号的SDK】](https://github.com/JeffreySu/WeiXinMPSDK)
+
