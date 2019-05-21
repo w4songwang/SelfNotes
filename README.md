@@ -1,3 +1,5 @@
+$('html , body').animate({scrollTop: 2000}, 1000);
+
 ### MarkDown
 - [马克飞象 MarkDown在线编辑](https://maxiang.io/)
 - [语法](https://blog.csdn.net/witnessai1/article/details/52551362)
