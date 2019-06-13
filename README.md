@@ -10,7 +10,7 @@ da:1 ma:1.5+1.5 di:7-2-1=4
 ### 命令行清除NuGet包缓存
 可以使用此命令列出本地缓存：
 ``` sql
-nuget locals all -listr
+nuget locals all -list
 ```
 可以使用此命令清除所有缓存：
 ``` sql
