@@ -7,6 +7,15 @@ da:1 ma:1.5+1.5 di:7-2-1=4
 - [编辑器推荐](http://www.williamlong.info/archives/4319.html)
 
 
+### 命令行清除NuGet包缓存
+可以使用此命令列出本地缓存：
+``` sql
+nuget locals all -listr
+```
+可以使用此命令清除所有缓存：
+``` sql
+nuget locals all -clear
+```
 
 
 ### 字符串MD5加密成guid
