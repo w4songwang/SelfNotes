@@ -189,3 +189,8 @@ dbcc sqlperf(logspace)
 - [【工具：BeyonCompare、git、fiddler、postman、everyone、自动化发布|测试、resharp、】]()
 
 https://www.cnblogs.com/Mxy-cnblog/p/9591560.html
+
+
+### vs调试插件
+- [插件地址](https://marketplace.visualstudio.com/items?itemName=vs-publisher-306627.NETReflectorVisualStudioExtension)
+- [使用方法](https://blog.csdn.net/song_jiang_long/article/details/78518216)
