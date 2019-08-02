@@ -1,8 +1,6 @@
 ### [C# EPPlus对Excel 单元格格式, 及行高、 列宽、 单元格边框线、 冻结设置](https://blog.csdn.net/weixin_33805743/article/details/90103488)
 
 
-### [C# EPPlus git项目地址](https://github.com/JanKallman/EPPlus)
-
 
 ### epplus设置单个单元格字体样式
 ``` c#
@@ -32,3 +30,6 @@ using (ExcelPackage package = new ExcelPackage(fi))
     package.Save();
 }
 ``` 
+
+### [C# Office操作](http://www.e-iceblue.cn/)
+
