@@ -33,3 +33,36 @@ using (ExcelPackage package = new ExcelPackage(fi))
 
 ### [C# Office操作](http://www.e-iceblue.cn/)
 
+
+
+
+### 对List进行分组排序后输出
+``` c#
+public class Student
+{
+    public int ID { get; set; }
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public string Sex { get; set; }
+}
+
+
+List<Student> lsStudent = new List<Student>()
+{
+    new Student { ID = 1 ,Name = "1", Age = 25, Sex = "男" },
+    new Student { ID = 2, Name = "2", Age = 18, Sex = "女" },
+    new Student { ID = 3, Name = "3", Age = 13, Sex = "男" },
+    new Student { ID = 4, Name = "4", Age = 23, Sex = "男" },
+    new Student { ID = 5, Name = "5", Age = 22, Sex = "女" }
+};
+ //先输出所有的男，在输出所有的女
+foreach (IGrouping<string, Student> group in lsStudent.GroupBy(x => x.Sex))
+{
+    Console.WriteLine("当前学生的性别是:{0}", group.Key);
+    foreach (Student student in group.OrderBy(a => a.Age))//不排序直接输出的话：Student student in group
+    {
+        Console.WriteLine("姓名：" + student.Name + " 年龄：" + student.Age);
+    }
+}
+
+``` 
