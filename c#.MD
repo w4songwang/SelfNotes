@@ -34,6 +34,7 @@ using (ExcelPackage package = new ExcelPackage(fi))
 ### [C# Office操作](http://www.e-iceblue.cn/)
 
 
+### [C# WebApi缓存](https://github.com/filipw/Strathweb.CacheOutput)
 
 
 ### 对List进行分组排序后输出
