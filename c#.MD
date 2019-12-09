@@ -67,3 +67,19 @@ foreach (IGrouping<string, Student> group in lsStudent.GroupBy(x => x.Sex))
 }
 
 ``` 
+
+
+
+### HttpClient
+``` c#
+ using (var client = new HttpClient(new HttpClientHandler { UseCookies = true }))
+ {
+     client.DefaultRequestHeaders.Add("AcceptDomain", "AllDomain");
+     //登录设置cookie
+     var path = "http://localhost/aspe023/api/v1/device/channellist?serial=" ;
+     var response = client.GetAsync(path).Result;
+     var result = response.Content.ReadAsStringAsync().Result;
+     var channelResponseDto = JsonConvert.DeserializeObject<int>(result);
+ }
+
+``` 
