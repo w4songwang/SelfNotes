@@ -27,3 +27,9 @@ x86
 http://download.microsoft.com/download/A/6/A/A6AC035D-DA3F-4F0C-ADA4-37C8E5D34E3D/setup/WinSDKDebuggingTools/dbg_x86.msi
 
 
+### beyondcompare
+- [Beyond Compare使用技巧](http://www.beyondcompare.cc/jiqiao/shiyong-shuoming.html)
+
+
+
+
