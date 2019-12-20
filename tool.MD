@@ -29,7 +29,8 @@ http://download.microsoft.com/download/A/6/A/A6AC035D-DA3F-4F0C-ADA4-37C8E5D34E3
 
 ### beyondcompare
 - [Beyond Compare使用技巧](http://www.beyondcompare.cc/jiqiao/shiyong-shuoming.html)
-- [Beyond Compare破解](http://www.pianshen.com/article/8682121844/)
+- [Beyond Compare破解1](http://www.pianshen.com/article/8682121844/)
+- [Beyond Compare破解2](https://blog.csdn.net/weixin_40751723/article/details/86218785)
 
 
 ### OD
