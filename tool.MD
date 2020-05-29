@@ -36,5 +36,8 @@ http://download.microsoft.com/download/A/6/A/A6AC035D-DA3F-4F0C-ADA4-37C8E5D34E3
 ### OD
 - [ollydbg](http://www.ollydbg.net/)
 
+### dottrace
+- [代码性能分析器Dottrace跟踪代码执行时间](https://www.cnblogs.com/aspnethot/articles/2367967.html)
 
-
+### Red Gate
+- [Red Gate系列文章](https://www.cnblogs.com/VAllen/archive/2012/09/08/SQLPrompt.html)
