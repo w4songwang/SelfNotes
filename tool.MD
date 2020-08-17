@@ -1,4 +1,7 @@
 
+### 其他
+putty、psftp
+
 ### 调试排错
 - [《windows高级调试》]()
 - [Application Verifier]()
