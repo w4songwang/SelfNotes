@@ -1,5 +1,8 @@
 
 ### 其他
+switchhosts(https://www.jianshu.com/p/db5ae726ea25)
+
+### 其他
 putty、psftp
 
 ### 调试排错
