@@ -22,3 +22,4 @@ from test) t
 where rn=1;
 
 ```
+### Sql Server合并多行询数据到一行：使用自连接、FOR XML PATH('')、STUFF或REPLACE函数(https://www.cnblogs.com/xiaotao726/p/6694645.html)
