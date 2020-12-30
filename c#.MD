@@ -88,3 +88,76 @@ foreach (IGrouping<string, Student> group in lsStudent.GroupBy(x => x.Sex))
 
 
 ### [代码生成器 Scaffolder T4]()
+
+
+
+
+### ef在sql server生成数据库时生成字段说明
+``` c#
+
+    public static class TableFieldDescriptionInit
+    {
+        public static void Init(Database context)
+        {
+            Task.Run(() =>
+            {
+                var currentAssembly = Assembly.GetExecutingAssembly();
+                var types = currentAssembly
+                    .GetTypes()
+                    .Where(x => x.IsClass && x.GetCustomAttributes(typeof(TableAttribute)).Any())//Type是类并且包含自定义TableAttribute属性
+                    .ToList();
+                var tables = types.Select(x => new TablePropertyInfo()
+                {
+                    TableName = x.GetAttributeValue((TableAttribute ta) => ta.Name),
+                    Peroperties = x.GetProperties(BindingFlags.Public | BindingFlags.Instance).ToList()
+                }).ToList();
+                SetDescription(tables, context);
+            });
+
+        }
+
+        /// <summary>
+        /// 设置数据库表字段说明
+        /// </summary>
+        /// <param name="tables"></param>
+        /// <param name="context"></param>
+        private static void SetDescription(List<TablePropertyInfo> tables, Database context)
+        {
+            tables.ForEach(table =>
+            {
+                if (string.IsNullOrWhiteSpace(table.TableName) || table.Peroperties == null || !tables.Any()) return;
+                table.Peroperties.ForEach(peropery =>
+                {
+                    var objs = peropery.GetCustomAttributes(typeof(DescriptionAttribute), true);
+                    if (!objs.Any()) return;
+                    var description = ((DescriptionAttribute)objs[0]).Description;
+                    if (string.IsNullOrWhiteSpace(description)) return;
+                    var sql = $"EXECUTE sp_addextendedproperty N'MS_Description', N'{description}', N'user', N'dbo', N'table', N'{table.TableName}', N'column', N'{peropery.Name}'";
+                    context.ExecuteSqlCommand(sql);
+                });
+            });
+        }
+    }
+
+    /// <summary>
+    /// 获取属性值
+    /// </summary>
+    public static class AttributeExtensions
+    {
+        public static TValue GetAttributeValue<TAttribute, TValue>(
+            this Type type,
+            Func<TAttribute, TValue> valueSelector)
+            where TAttribute : Attribute
+        {
+            var att = type.GetCustomAttributes(
+                typeof(TAttribute), true
+            ).FirstOrDefault() as TAttribute;
+            return att != null ? valueSelector(att) : default(TValue);
+        }
+    }
+    public class TablePropertyInfo
+    {
+        public string TableName { get; set; }
+        public List<PropertyInfo> Peroperties { get; set; }
+    }
+``` 
