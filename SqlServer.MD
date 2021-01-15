@@ -1,4 +1,4 @@
-### 用SQL SERVER取分组数据第一条
+### 1.用SQL SERVER取分组数据第一条
 
 ``` sql
 
@@ -22,4 +22,34 @@ from test) t
 where rn=1;
 
 ```
-### Sql Server合并多行询数据到一行：使用自连接、FOR XML PATH('')、STUFF或REPLACE函数(https://www.cnblogs.com/xiaotao726/p/6694645.html)
+### 2.Sql Server合并多行询数据到一行：使用自连接、FOR XML PATH('')、STUFF或REPLACE函数(https://www.cnblogs.com/xiaotao726/p/6694645.html)
+
+
+### 3.sqlserver 表中的字段拆分（一行变多行XML）
+
+``` sql
+create table OneTomore
+(
+	id int identity(1,1),
+	Name varchar(255)
+)
+;
+insert into OneTomore values('1*2*3*4*5')
+insert into OneTomore values('1*2*3*4*5')
+insert into OneTomore values('1*2*3*4*5*****')
+
+;
+;with mycte as
+(
+	 SELECT 
+        ID, 
+        CAST('<i>' + REPLACE(Name, '*', '</i><i>') + '</i>' AS XML) AS KID 
+    FROM OneTomore 
+) 
+
+select ID,x.i.value('.', 'VARCHAR(10)') AS KID 
+from mycte
+CROSS APPLY KID.nodes('i') x(i) 
+where  len(x.i.value('.', 'VARCHAR(10)'))<>''
+
+```
