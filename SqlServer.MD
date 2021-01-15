@@ -28,28 +28,19 @@ where rn=1;
 ### 3.sqlserver 表中的字段拆分（一行变多行XML）
 
 ``` sql
-create table OneTomore
-(
-	id int identity(1,1),
-	Name varchar(255)
-)
-;
-insert into OneTomore values('1*2*3*4*5')
-insert into OneTomore values('1*2*3*4*5')
-insert into OneTomore values('1*2*3*4*5*****')
 
-;
-;with mycte as
-(
-	 SELECT 
-        ID, 
-        CAST('<i>' + REPLACE(Name, '*', '</i><i>') + '</i>' AS XML) AS KID 
-    FROM OneTomore 
-) 
+if object_id('[aaa]') is not null drop table [aaa]
+go
+create table [aaa]([地区] varchar(4),[内容] varchar(45))
+insert [aaa]
+select '中国','021sp.html|管材|4355;028sp.html|建筑材料|3209' union all
+select '中国','023sp.html|材|4356;025sp.html|建|9209'
+go
 
-select ID,x.i.value('.', 'VARCHAR(10)') AS KID 
-from mycte
-CROSS APPLY KID.nodes('i') x(i) 
-where  len(x.i.value('.', 'VARCHAR(10)'))<>''
+select   a.地区,
+  内容=substring(a.内容,b.number,charindex(';',a.内容+';',b.number)-b.number)
+from [aaa] a
+join master..spt_values b on b.type='P'
+where charindex(';',';'+a.内容,b.number)=b.number
 
 ```
