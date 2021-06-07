@@ -44,3 +44,24 @@ join master..spt_values b on b.type='P'
 where charindex(';',';'+a.内容,b.number)=b.number
 
 ```
+
+### 4.sqlserver 数据同步或删除过程中，先禁用主外键约束检查，数据同步完成后再启用主外键约束检查
+
+``` sql
+select
+'ALTER TABLE '+o.name+' NOCHECK CONSTRAINT ['+fk.name+'];' AS Command
+from
+sys.foreign_keys fk
+JOIN sys.all_objects o ON (fk.parent_object_id=o.object_id)
+具体会有多少条记录，取决于你的数据库里面，有多少个外键了。
+然后复制结果, 粘贴出来执行. 就停用 外键约束了.
+然后你去删除数据去.
+数据删除好了, 再启用外键约束
+select
+'ALTER TABLE ' + o.name + ' CHECK CONSTRAINT [' + fk.name + '];' AS Command
+from
+sys.foreign_keys fk
+JOIN sys.all_objects o ON (fk.parent_object_id = o.object_id)
+和前面的一样, 把查询出来的结果, 复制一下, 然后粘贴出来去执行.
+
+```
